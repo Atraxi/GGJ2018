@@ -1,20 +1,19 @@
 import * as React from 'react';
 import { Vector2 } from '../Util/Util';
-
 const logo = require('../logo.svg');
 
-export class PlanetProps {
+export class ParcelProps {
     Position: Vector2;
-    Mass: number;
+    Velocity: Vector2;
     key: number;
-    constructor(X: number, Y: number, mass: number, key: number) {
-        this.Position = {X, Y};
-        this.Mass = mass;
+    constructor(position: Vector2, velocity: Vector2, key: number) {
+        this.Position = position;
+        this.Velocity = velocity;
         this.key = key;
     }
 }
 
-export class Planet extends React.Component<PlanetProps, {}> {
+export class Parcel extends React.Component<ParcelProps, {}> {
     render() {
         var style: React.CSSProperties = {
             top: this.props.Position.Y,
@@ -22,7 +21,7 @@ export class Planet extends React.Component<PlanetProps, {}> {
             position: 'absolute'
         };
         return (
-            <img style={style} src={logo} className="App-logo" alt="logo" />
+          <img style={style} src={logo} className="App-logo" alt="logo" />
         );
     }
 }
