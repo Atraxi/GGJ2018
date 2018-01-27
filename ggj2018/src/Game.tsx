@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Planet, PlanetProps } from './Entities/Planet';
 import { Package, PackageProps } from './Entities/Package';
+import NewId from './Util/Id';
 
 class AppState {
     Planets: PlanetProps[];
@@ -12,8 +13,8 @@ export default class Game extends React.Component<{}, AppState> {
         super(props);
         this.state = {
             Planets: [
-            new PlanetProps(123, 123, 500),
-            new PlanetProps(234, 234, 500)
+            new PlanetProps(123, 123, 500, NewId()),
+            new PlanetProps(234, 234, 500, NewId())
             ],
             Packages: []
         };
@@ -23,16 +24,15 @@ export default class Game extends React.Component<{}, AppState> {
         if (this.state == null) {
             return null;
         }
-        
+
         var Planets = 
-            this.state.Planets.forEach(element => 
-              <Planet {...element}/>
+            this.state.Planets.map(element => 
+              <Planet key={element.key} {...element}/>
         );
         var Packages = 
-            this.state.Packages.forEach(element => 
-              <Package {...element}/>
+            this.state.Packages.map(element => 
+              <Package key={element.key} {...element}/>
         );
-
         return (
             <div>
                 {Planets}
