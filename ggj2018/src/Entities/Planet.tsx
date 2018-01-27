@@ -6,10 +6,12 @@ const logo = require('../logo.svg');
 export class PlanetProps {
     Position: Vector2;
     Mass: number;
+    Radius: number;
     key: number;
-    constructor(X: number, Y: number, mass: number, key: number) {
-        this.Position = {X, Y};
+    constructor(position: Vector2, mass: number, radius: number, key: number) {
+        this.Position = position;
         this.Mass = mass;
+        this.Radius = radius;
         this.key = key;
     }
 }

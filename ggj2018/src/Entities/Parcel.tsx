@@ -6,6 +6,8 @@ export class ParcelProps {
     Position: Vector2;
     Velocity: Vector2;
     key: number;
+    HasCollided: boolean;
+    Radius: number;
     constructor(position: Vector2, velocity: Vector2, key: number) {
         this.Position = position;
         this.Velocity = velocity;
@@ -14,6 +16,10 @@ export class ParcelProps {
 }
 
 export class Parcel extends React.Component<ParcelProps, {}> {
+    constructor(props: ParcelProps) {
+        super(props);
+    }
+
     render() {
         var style: React.CSSProperties = {
             top: this.props.Position.Y,
